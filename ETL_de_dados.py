@@ -23,7 +23,7 @@ def coletar_dados(access_token, nome_empresa):
     pagina =     1
 
     while True:
-        params = {"page": pagina, "per_page": 500}
+        params = {"page": pagina, "per_page": 100}
         response = requests.get(url_base, headers=headers, params=params)
 
         if response.status_code != 200:
