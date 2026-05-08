@@ -21,7 +21,7 @@ jobs:
 
       - name: Instalar Dependências
         run: 
-          pip install requests pandas sqlalchemy cryptography pymysql
+          pip install requests pandas sqlalchemy cryptography pymysql psycopg2
             
       - name: Executar Script
         run: python ETL_de_dados.py
