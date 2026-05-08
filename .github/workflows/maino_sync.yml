@@ -1,0 +1,36 @@
+name: Sync Maino Data
+
+on:
+  schedule:
+    # '0 */4 * * *' significa: No minuto 0, a cada 4 horas
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Instalar Dependências
+        run: |
+          pip install requests mysql-connector-python
+
+      - name: Executar Script
+        run: python ETL_de_dados.py
+        env:
+          # É aqui que protegemos seus dados sensíveis
+          Shoptan: ${{ secrets.Shoptan }}
+          Xangai: ${{ secrets.Xangai }}
+          user: ${{ secrets.user }}
+          password: ${{ secrets.password }}
+          host: ${{ secrets.host }}
+          port: ${{ secrets.port }}
+          dbname: ${{ secrets.dbname }}
