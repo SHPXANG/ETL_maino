@@ -40,7 +40,7 @@ def coletar_dados(access_token, nome_empresa):
             todos_os_dados.append({
 
                 "Processo": (conta.get("processo") or {}).get("codigo", ""),
-                "numero_do_documento": conta.get("numero_fatura", ""),
+                "numero_do_documento": conta.get("numero_titulo", ""),
                 "Vencimento": conta.get("data_vencimento", ""),
                 "Valor": float(conta.get("valor") or 0),
                 "data_pagamento": conta.get("data_pagamento", ""),
