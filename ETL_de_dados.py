@@ -2,9 +2,14 @@ import requests
 import pandas as pd
 import os
 from sqlalchemy import create_engine
-from dotenv import load_dotenv
 
-load_dotenv()
+Shoptan = os.getenv('Shoptan')
+Xangai = os.getenv('Xangai')
+user = os.getenv('user')
+password = os.getenv('password')
+host = os.getenv('host')
+port = os.getenv('port')
+dbname = os.getenv('dbname')
 
 #extrair dados da API
 def coletar_dados(access_token, nome_empresa):
